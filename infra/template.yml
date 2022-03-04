@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Description: Cria um VPC Endpoint
+
+Parameters:
+
+  VpcId:
+    Type: String
+    Default: vpc-023684f5618ce7382
+
+  RouteTableId1:
+    Type: String
+    Default: rtb-0f5bb464e5374acbd
+
+  RouteTableId2:
+    Type: String
+    Default: rtb-0193cd056accb3bce
+
+  Owner:
+    Type: String
+    Default: tg
+
+Resources:
+
+  VPCEndpointDynamoDB:
+    Type: AWS::EC2::VPCEndpoint
+    Properties:
+      RouteTableIds:
+        - !Ref RouteTableId1
+        - !Ref RouteTableId2
+      ServiceName: com.amazonaws.us-east-2.dynamodb
+      VpcEndpointType: Gateway
+      VpcId: !Ref VpcId
+      Tags:
+        - Key: Owner
+          Value: !Ref Owner
