@@ -1,4 +1,4 @@
 # VPC Endpoint
 
-Esse arquivo cria:
-- Um VPC Endpoint para o DynamoDB;
+This project creates:
+- VPC Endpoint;
