@@ -3,7 +3,6 @@ AWSTemplateFormatVersion: 2010-09-09
 Description: Creates a VPC Endpoint
 
 Parameters:
-
   VpcId:
     Type: String
 
@@ -27,7 +26,6 @@ Parameters:
     Default: tg
 
 Resources:
-
   VPCEndpointDynamoDB:
     Type: AWS::EC2::VPCEndpoint
     Properties:
@@ -44,13 +42,13 @@ Resources:
   VPCEndpointExecuteApi:
     Type: AWS::EC2::VPCEndpoint
     DependsOn: SecurityGroupVPCEndpoint
-    Properties: 
+    Properties:
       ServiceName: com.amazonaws.us-east-2.execute-api
       VpcEndpointType: Interface
       PrivateDnsEnabled: true
       VpcId: !Ref VpcId
-      SecurityGroupIds: 
+      SecurityGroupIds:
         - !Ref SecurityGroupId
-      SubnetIds: 
+      SubnetIds:
         - !Ref SubnetId1
         - !Ref SubnetId2
